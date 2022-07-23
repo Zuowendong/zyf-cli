@@ -1,0 +1,17 @@
+{
+  "name": "zyf-cli",
+  "version": "1.0.0",
+  "description": "基于nodejs的cli工具",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:wendZzoo/zyf-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
