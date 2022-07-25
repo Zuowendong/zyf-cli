@@ -1,20 +1,20 @@
-
+<% if (static) { %>
     const serve = require('koa-static')
-  
+  <% } %>
  
     const app = new koa()
 
-
+<% if (static) { %>
     app.use(serve(__dirname + "/static"))
+<% } %>
 
-
-
+<% if (router) { %>
     const router = new Router()
     router.get("/", (ctx) => {
         ctx.body = 'Hello, koa-setup-test'
     })
     app.use(router.routes())
-
+<% } %>
 
     app.listen(8080, () => {
         console.log('open server localhost:8080')
