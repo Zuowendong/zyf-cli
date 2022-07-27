@@ -1,14 +1,14 @@
-<% if (static) { %>
+<% if (middleware.static) { %>
     const serve = require('koa-static')
   <% } %>
  
     const app = new koa()
 
-<% if (static) { %>
+<% if (middleware.static) { %>
     app.use(serve(__dirname + "/static"))
 <% } %>
 
-<% if (router) { %>
+<% if (middleware.router) { %>
     const router = new Router()
     router.get("/", (ctx) => {
         ctx.body = 'Hello, koa-setup-test'

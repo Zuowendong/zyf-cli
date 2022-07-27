@@ -1,12 +1,11 @@
 import ejs from 'ejs'
 import fs from 'fs'
 
-export default () => {
+export default (config) => {
     const indexTemplate = fs.readFileSync("./template/index.ejs")
 
     const code = ejs.render(indexTemplate.toString(), {
-        static: true,
-        router: true
+        middleware: config.middleware
     })
 
     return code
