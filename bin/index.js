@@ -37,5 +37,5 @@ execa("npm install", {
 });
 
 function getRootPath() {
-    return "./hei";
+    return path.resolve(process.cwd(), config.packageName)
 }
