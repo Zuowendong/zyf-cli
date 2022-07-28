@@ -24,8 +24,9 @@ fs.writeFileSync(
 );
 // 4. 安装依赖 ： 官方库：child-process子进程    第三方库： execa (child-process子进程 库的封装)
 // Todo
-execa("yarn", {
+execa("npm install", {
     cwd: getRootPath(),
+    stdio: [2, 2, 2],
 });
 
 function getRootPath() {
