@@ -1,5 +1,6 @@
 // fs
 import fs from "fs";
+import { execa } from "execa";
 
 import createIndexTemplate from "./createIndexTemplate.js";
 import createPackageTemplate from "./createPackageTemplate.js";
@@ -12,8 +13,6 @@ import { createConfig } from "./config.js";
 const answer = await question();
 const config = createConfig(answer);
 
-console.log(config);
-
 // 1. 创建文件夹 -> hei
 fs.mkdirSync(getRootPath());
 // 2. 创建入口文件 -> index.js
@@ -23,8 +22,11 @@ fs.writeFileSync(
     `${getRootPath()}/package.json`,
     createPackageTemplate(config)
 );
-// 4. 安装依赖
+// 4. 安装依赖 ： 官方库：child-process子进程    第三方库： execa (child-process子进程 库的封装)
 // Todo
+execa("yarn", {
+    cwd: getRootPath(),
+});
 
 function getRootPath() {
     return "./hei";
