@@ -1,40 +1,15 @@
 // fs
 import fs from "fs";
-import inquirer from "inquirer";
+
 import createIndexTemplate from "./createIndexTemplate.js";
 import createPackageTemplate from "./createPackageTemplate.js";
-
+import question from "./question/index.js";
 // input
 // process
 // output
 
-const r = await inquirer.prompt([
-    /* Pass your questions in here */
-    {
-        type: "input",
-        name: "packageName",
-        message: "set package name",
-        validate(val) {
-            if (val) return true;
-            return "please enter package name";
-        },
-    },
-    {
-        type: "input",
-        name: "port",
-        default() {
-            return 8080;
-        },
-        message: "set port number",
-    },
-    {
-        type: "checkbox",
-        name: "middleware",
-        choices: [{ name: "koaStatic" }, { name: "koaRouter" }],
-    },
-]);
-
-console.log(r);
+const answer = await question();
+console.log(answer);
 
 const inputConfig = {
     packageName: "hei",
