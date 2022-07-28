@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "基于nodejs的cli工具",
   "main": "index.js",
+  "bin": "./bin/index.js",
   "type": "module",
   "scripts": {
-    "test": "rm -rf ./hei && node index.js"
+    "test": "rm -rf ./hei && node index.js",
+    "test-g": "rm -rf ./hei && zyf-cli"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 // fs
 import fs from "fs";
 import { execa } from "execa";
