@@ -1,6 +1,7 @@
 import ejs from "ejs";
 import fs from "fs";
 import path from "path";
+import prettier from "prettier";
 import { fileURLToPath } from "url";
 
 export default (config) => {
@@ -14,5 +15,5 @@ export default (config) => {
         middleware: config.middleware,
     });
 
-    return code;
+    return prettier.format(code, { parser: "babel" });
 };

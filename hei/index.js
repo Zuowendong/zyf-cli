@@ -1,26 +1,19 @@
-const koa = require('koa')
+const koa = require("koa");
 
-    const Router = require('koa-router')
-  
+const Router = require("koa-router");
 
+const serve = require("koa-static");
 
-    const serve = require('koa-static')
-  
- 
-    const app = new koa()
+const app = new koa();
 
+app.use(serve(__dirname + "/static"));
 
-    app.use(serve(__dirname + "/static"))
+const router = new Router();
+router.get("/", (ctx) => {
+  ctx.body = "Hello, koa-setup-test";
+});
+app.use(router.routes());
 
-
-
-    const router = new Router()
-    router.get("/", (ctx) => {
-        ctx.body = 'Hello, koa-setup-test'
-    })
-    app.use(router.routes())
-
-
-    app.listen(8080, () => {
-        console.log('open server localhost:8080')
-    })
+app.listen(8080, () => {
+  console.log("open server localhost:8080");
+});
