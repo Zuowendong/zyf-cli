@@ -7,11 +7,11 @@ import { fileURLToPath } from "url";
 export default (config) => {
     const __dirname = fileURLToPath(import.meta.url);
 
-    const packageTemplate = fs.readFileSync(
+    const template = fs.readFileSync(
         path.resolve(__dirname, "../template/package.ejs")
     );
 
-    const code = ejs.render(packageTemplate.toString(), {
+    const code = ejs.render(template.toString(), {
         packageName: config.packageName,
         middleware: config.middleware,
     });

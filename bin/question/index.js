@@ -6,7 +6,6 @@ import middleware from "./middleware.js";
 
 export default () => {
     return inquirer.prompt([
-        /* Pass your questions in here */
         packageName(),
         port(),
         middleware(),

@@ -1,42 +1,40 @@
 #! /usr/bin/env node
 
-// fs
 import fs from "fs";
-import path from 'path'
+import path from "path";
 import { execa } from "execa";
-import chalk from 'chalk'
-import createIndexTemplate from "./createIndexTemplate.js";
-import createPackageTemplate from "./createPackageTemplate.js";
+import chalk from "chalk";
 import question from "./question/index.js";
 import { createConfig } from "./config.js";
-// input
-// process
-// output
+
+import createIndexHtmlTemplate from "./createIndexHtmlTemplate.js";
+import createMainJsTemplate from "./createMainJsTemplate.js";
+import createViteConfigJsTemplate from "./createViteConfigJsTemplate.js";
+import createAppVueTemplate from "./createAppVueTemplate.js";
+import createPackageTemplate from "./createPackageTemplate.js";
+
+import createFolder from "./utils/createFolder.js";
+import createFile from "./utils/createFile.js";
 
 const answer = await question();
 const config = createConfig(answer);
 
-// 1. 创建文件夹 -> hei
-console.log(chalk.blue(`创建文件夹 -> ${config.packageName}`));
-fs.mkdirSync(getRootPath());
+createFolder("Create a folder", getRootPath());
+createFile("Creating an HTML file", `${getRootPath()}/index.html`, createIndexHtmlTemplate(config));
+createFile("Create the vite.config.js file", `${getRootPath()}/vite.config.js`, createViteConfigJsTemplate(config));
 
-// 2. 创建入口文件 -> index.js
-console.log(chalk.blue(`创建入口文件 -> index.js`));
-fs.writeFileSync(`${getRootPath()}/index.js`, createIndexTemplate(config));
+createFolder("Create a src folder", `${getRootPath()}/src`);
+createFile("Create the main.js file", `${getRootPath()}/src/index.js`, createMainJsTemplate(config));
+createFile("Create the main.js file", `${getRootPath()}/src/App.vue`, createAppVueTemplate(config));
 
-// 3. 创建package.json
-console.log(chalk.blue(`创建package.json`));
-fs.writeFileSync(
-    `${getRootPath()}/package.json`,
-    createPackageTemplate(config)
-);
-// 4. 安装依赖 ： 官方库：child-process子进程    第三方库： execa (child-process子进程 库的封装)
-console.log(chalk.blue(`安装依赖`));
+createFile("Create package.json", `${getRootPath()}/package.json`, createPackageTemplate(config));
+
+console.log(chalk.blue(`Install dependencies`));
 execa("npm install", {
-    cwd: getRootPath(),
-    stdio: [2, 2, 2],
+	cwd: getRootPath(),
+	stdio: [2, 2, 2],
 });
 
 function getRootPath() {
-    return path.resolve(process.cwd(), config.packageName)
+	return path.resolve(process.cwd(), config.packageName);
 }

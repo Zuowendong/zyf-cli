@@ -1,21 +1,17 @@
 {
-    "name": "<%= packageName %>",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified \" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "koa": "^2.13.1"
-      <% if (middleware.router) { %>
-        ,"koa-router": "^10.0.0"
-      <% } %>
-      <% if (middleware.static) { %>
-        ,"koa-static": "^5.0.0"
-      <% } %>
-    }
+	"name": "<%= packageName %>",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc --noEmit && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"vue": "^3.2.37"
+	},
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "vite": "^3.0.7"
+  }
 }
