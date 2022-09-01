@@ -7,11 +7,11 @@ import chalk from "chalk";
 import question from "./question/index.js";
 import { createConfig } from "./config.js";
 
-import createIndexHtmlTemplate from "./createIndexHtmlTemplate.js";
-import createMainJsTemplate from "./createMainJsTemplate.js";
-import createViteConfigJsTemplate from "./createViteConfigJsTemplate.js";
-import createAppVueTemplate from "./createAppVueTemplate.js";
-import createPackageTemplate from "./createPackageTemplate.js";
+import createIndexHtmlTemplate from "./createTemp/createIndexHtmlTemplate.js";
+import createMainJsTemplate from "./createTemp/createMainJsTemplate.js";
+import createViteConfigJsTemplate from "./createTemp/createViteConfigJsTemplate.js";
+import createAppVueTemplate from "./createTemp/createAppVueTemplate.js";
+import createPackageTemplate from "./createTemp/createPackageTemplate.js";
 
 import createFolder from "./utils/createFolder.js";
 import createFile from "./utils/createFile.js";
@@ -24,7 +24,7 @@ createFile("Creating an HTML file", `${getRootPath()}/index.html`, createIndexHt
 createFile("Create the vite.config.js file", `${getRootPath()}/vite.config.js`, createViteConfigJsTemplate(config));
 
 createFolder("Create a src folder", `${getRootPath()}/src`);
-createFile("Create the main.js file", `${getRootPath()}/src/index.js`, createMainJsTemplate(config));
+createFile("Create the main.js file", `${getRootPath()}/src/main.js`, createMainJsTemplate(config));
 createFile("Create the main.js file", `${getRootPath()}/src/App.vue`, createAppVueTemplate(config));
 
 createFile("Create package.json", `${getRootPath()}/package.json`, createPackageTemplate(config));

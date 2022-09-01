@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 export default (config) => {
 	const __dirname = fileURLToPath(import.meta.url);
 
-	const template = fs.readFileSync(path.resolve(__dirname, "../template/index-html.ejs"));
+	const template = fs.readFileSync(path.resolve(__dirname, "../../template/index-html.ejs"));
 
 	const code = ejs.render(template.toString(), {
 		htmlTag: "<!DOCTYPE html>",
