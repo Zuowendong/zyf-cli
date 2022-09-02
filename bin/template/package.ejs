@@ -6,12 +6,14 @@
 		"dev": "vite",
 		"build": "vue-tsc --noEmit && vite build",
 		"preview": "vite preview"
+		<% if (middleware.vitest) { %>,"test": "vitest"<% } %>
 	},
 	"dependencies": {
 		"vue": "^3.2.37"
 	},
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.3",
-    "vite": "^3.0.7"
+    "@vitejs/plugin-vue": "^3.0.3"
+    ,"vite": "^3.0.7"
+		<% if (middleware.vitest) { %>,"vitest": "^0.22.1"<% } %>
   }
 }

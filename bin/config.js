@@ -5,10 +5,8 @@ export function createConfig(answer) {
 
 	return {
 		packageName: answer.packageName,
-		port: answer.port,
 		middleware: {
-			static: haveMiddleware("koaStatic"),
-			router: haveMiddleware("koaRouter"),
+			vitest: haveMiddleware("vitest"),
 		},
 	};
 }
