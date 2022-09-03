@@ -1,15 +1,11 @@
-import ejs from "ejs";
-import fs from "fs";
-import path from "path";
-import prettier from "prettier";
-import { fileURLToPath } from "url";
+import createTemplate from "../utils/createTemplate.js";
 
 export default (config) => {
-	const __dirname = fileURLToPath(import.meta.url);
-
-	const template = fs.readFileSync(path.resolve(__dirname, "../../template/component.ejs"));
-
-	const code = ejs.render(template.toString(), {});
-
-	return prettier.format(code, { parser: "html" });
+	return createTemplate(
+		"../../template/component.ejs",
+		{
+			middleware: config.middleware,
+		},
+		"html"
+	);
 };

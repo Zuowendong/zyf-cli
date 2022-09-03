@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-import path from "path";
+import path, { join } from "path";
 import { execa } from "execa";
 import chalk from "chalk";
 import question from "./question/index.js";
@@ -20,6 +20,8 @@ import createFile from "./utils/createFile.js";
 
 const answer = await question();
 const config = createConfig(answer);
+
+console.log(chalk.blue(JSON.stringify(config)));
 
 createFolder("Create a folder", getRootPath());
 createFolder("Create a src folder", `${getRootPath()}/src`);

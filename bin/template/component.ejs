@@ -1,12 +1,12 @@
 <script setup>
-import { toRefs } from "vue";
+	import { toRefs } from "vue";
 
-const props = defineProps({
-  msg: {
-    type: String,
-    default: "",
-  },
-});
+	const props = defineProps({
+		msg: {
+			type: String,
+			default: "",
+		},
+	});
 let { msg } = toRefs(props);
 const emit = defineEmits(["change"]);
 const changeHandle = () => {
@@ -15,12 +15,27 @@ const changeHandle = () => {
 </script>
 
 <template>
-  <div class="text" @click="changeHandle">{{ msg }}</div>
+<div class="main" @click="changeHandle">
+	<span class="text">{{ msg }}</span>
+</div>
 </template>
 
-<style scoped>
-.text {
-  font-size: 50px;
-  color: #888;
+<% if (middleware.scss) { %>
+<style lang="scss" scoped>
+.main {
+	color: #888;
+	.text {
+		font-size: 50px;
+	}
 }
 </style>
+<% } else { %>
+<style scoped>
+.main {
+	color: #888;
+}
+.text {
+	font-size: 50px;
+}
+</style>
+<% } %>

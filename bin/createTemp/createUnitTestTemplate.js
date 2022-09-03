@@ -1,17 +1,5 @@
-import ejs from "ejs";
-import fs from "fs";
-import path from "path";
-import prettier from "prettier";
-import { fileURLToPath } from "url";
+import createTemplate from "../utils/createTemplate.js";
 
 export default (config) => {
-	const __dirname = fileURLToPath(import.meta.url);
-
-	const template = fs.readFileSync(path.resolve(__dirname, "../../template/unit-test.ejs"));
-
-	const code = ejs.render(template.toString(), {
-		middleware: config.middleware,
-	});
-
-	return prettier.format(code, { parser: "babel" });
+	return createTemplate("../../template/unit-test.ejs", { middleware: config.middleware }, "babel");
 };

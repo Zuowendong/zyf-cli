@@ -7,6 +7,7 @@ export function createConfig(answer) {
 		packageName: answer.packageName,
 		middleware: {
 			vitest: haveMiddleware("vitest"),
+			scss: haveMiddleware("scss"),
 		},
 	};
 }

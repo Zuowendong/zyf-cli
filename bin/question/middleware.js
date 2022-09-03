@@ -4,7 +4,7 @@ export default () => {
         name: "middleware",
         choices: [
             { name: "vitest" },
-            // { name: "koaRouter" }
+            { name: "scss" }
         ],
     };
 };

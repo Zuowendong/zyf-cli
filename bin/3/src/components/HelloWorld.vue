@@ -1,0 +1,30 @@
+<script setup>
+  import { toRefs } from "vue";
+
+  const props = defineProps({
+    msg: {
+      type: String,
+      default: "",
+    },
+  });
+  let { msg } = toRefs(props);
+  const emit = defineEmits(["change"]);
+  const changeHandle = () => {
+    emit("change");
+  };
+</script>
+
+<template>
+  <div class="main" @click="changeHandle">
+    <span class="text">{{ msg }}</span>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+  .main {
+    color: #888;
+    .text {
+      font-size: 50px;
+    }
+  }
+</style>
