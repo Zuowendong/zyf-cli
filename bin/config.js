@@ -1,5 +1,7 @@
 export function createConfig(answer) {
 	function haveMiddleware(name) {
+		console.log('config.js', answer.middleware);
+		
 		return answer.middleware.indexOf(name) !== -1;
 	}
 
@@ -8,6 +10,7 @@ export function createConfig(answer) {
 		middleware: {
 			vitest: haveMiddleware("vitest"),
 			scss: haveMiddleware("scss"),
+			vueRouter: haveMiddleware("vue-router"),
 		},
 	};
 }

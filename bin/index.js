@@ -14,14 +14,14 @@ import createAppVueTemplate from "./createTemp/createAppVueTemplate.js";
 import createPackageTemplate from "./createTemp/createPackageTemplate.js";
 import createAddJsTemplate from "./createTemp/createAddJsTemplate.js";
 import createComponentTemplate from "./createTemp/createComponentTemplate.js";
+import createViewsPageTemplate from "./createTemp/createViewsPageTemplate.js";
+import createRouterTemplate from "./createTemp/createRouterTemplate.js";
 
 import createFolder from "./utils/createFolder.js";
 import createFile from "./utils/createFile.js";
 
 const answer = await question();
 const config = createConfig(answer);
-
-console.log(chalk.blue(JSON.stringify(config)));
 
 createFolder("Create a folder", getRootPath());
 createFolder("Create a src folder", `${getRootPath()}/src`);
@@ -34,6 +34,15 @@ if (config.middleware.vitest) {
 	createFolder("Create a tests folder", `${getRootPath()}/tests`);
 	createFile("Create the main.js file", `${getRootPath()}/tests/index.spec.js`, createUnitTestTemplate(config));
 	createFile("Create the add.js file", `${getRootPath()}/src/add.js`, createAddJsTemplate(config));
+}
+
+if(config.middleware.vueRouter) {
+	createFolder("Create a views folder", `${getRootPath()}/src/router`);
+	createFile("Create the home.js file", `${getRootPath()}/src/router/index.js`, createRouterTemplate(config));
+
+	createFolder("Create a views folder", `${getRootPath()}/src/views`);
+	createFile("Create the home.vue file", `${getRootPath()}/src/views/home.vue`, createViewsPageTemplate(config, 'home'));
+	createFile("Create the about.vue file", `${getRootPath()}/src/views/about.vue`, createViewsPageTemplate(config, 'about'));
 }
 
 createFile("Create the main.js file", `${getRootPath()}/src/main.js`, createMainJsTemplate(config));

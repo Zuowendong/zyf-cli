@@ -1,0 +1,27 @@
+<template>
+	<div>
+	<div @click="jumpToAbout">Home</div>
+	<hello-world :msg="msg" @change="changeMsgHandle"/>
+	</div>
+</template>
+
+<script setup>
+import {ref} from 'vue'
+import { useRouter } from "vue-router";
+
+import HelloWorld from '../components/HelloWorld.vue'
+
+let msg = ref('Hello World ')
+const changeMsgHandle = () => {
+	msg.value += msg.value
+}
+
+const router = useRouter();
+const jumpToAbout = () => {
+	router.push({
+		name: "About",
+	});
+};
+</script>
+
+<style scoped></style>
