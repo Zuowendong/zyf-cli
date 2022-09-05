@@ -9,9 +9,9 @@
 		<% if (middleware.vitest) { %>,"test": "vitest"<% } %>
 	},
 	"dependencies": {
-		<% if (middleware.pinia) { %>"pinia": "^2.0.21"<% } %>
-		,"vue": "^3.2.37"
+		"vue": "^3.2.*"
 		<% if (middleware.vueRouter) { %>,"vue-router": "4"<% } %>
+		<% if (middleware.pinia) { %>"pinia": "^2.0.21"<% } %>
 	},
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3"
