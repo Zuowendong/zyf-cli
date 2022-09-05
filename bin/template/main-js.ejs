@@ -1,7 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 <% if (middleware.vueRouter) { %>import router from "./router/index";<% } %>
+<% if (middleware.pinia) { %>import { createPinia } from "pinia";<% } %>
 
 const app = createApp(App);
 <% if (middleware.vueRouter) { %>app.use(router);<% } %>
+<% if (middleware.pinia) { %>app.use(createPinia());<% } %>
 app.mount("#app");

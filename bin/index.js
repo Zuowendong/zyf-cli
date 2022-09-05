@@ -16,6 +16,8 @@ import createAddJsTemplate from "./createTemp/createAddJsTemplate.js";
 import createComponentTemplate from "./createTemp/createComponentTemplate.js";
 import createViewsPageTemplate from "./createTemp/createViewsPageTemplate.js";
 import createRouterTemplate from "./createTemp/createRouterTemplate.js";
+import createPiniaTemplate from "./createTemp/createPiniaTemplate.js";
+import createTodoTemplate from "./createTemp/createTodoTemplate.js";
 
 import createFolder from "./utils/createFolder.js";
 import createFile from "./utils/createFile.js";
@@ -43,6 +45,12 @@ if(config.middleware.vueRouter) {
 	createFolder("Create a views folder", `${getRootPath()}/src/views`);
 	createFile("Create the home.vue file", `${getRootPath()}/src/views/home.vue`, createViewsPageTemplate(config, 'home'));
 	createFile("Create the about.vue file", `${getRootPath()}/src/views/about.vue`, createViewsPageTemplate(config, 'about'));
+}
+
+if(config.middleware.pinia) {
+	createFolder("Create a stores folder", `${getRootPath()}/src/stores`);
+	createFile("Create the todo.js file", `${getRootPath()}/src/stores/index.js`, createPiniaTemplate(config));
+	createFile("Create the todo.vue file", `${getRootPath()}/src/components/Todo.vue`, createTodoTemplate(config));
 }
 
 createFile("Create the main.js file", `${getRootPath()}/src/main.js`, createMainJsTemplate(config));

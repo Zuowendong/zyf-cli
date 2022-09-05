@@ -1,0 +1,27 @@
+<template>
+	<div>
+		<div>一共有：{{ todoCount }}</div>
+		<input type="text" v-model="todoStore.newItem" />
+		<button @click="todoStore.addItem">add</button>
+		<ul>
+			<li v-for="item in todoStore.todoList" :key="item.id">
+				{{ item.context }}
+				<button @click="todoStore.removeItem(item)">remove</button>
+			</li>
+		</ul>
+	</div>
+</template>
+
+<script setup>
+import { useTodoStore } from "../stores/index";
+import { storeToRefs } from "pinia";
+
+const todoStore = useTodoStore();
+const { todoCount } = storeToRefs(todoStore);
+</script>
+
+<% if (middleware.scss) { %>
+	<style lang="scss" scoped>
+</style><% } else { %>
+	<style scoped></style>
+<% } %>

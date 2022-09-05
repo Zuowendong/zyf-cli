@@ -12,4 +12,8 @@ const jumpToHome = () => {
 };
 </script>
 
-<style scoped></style>
+<% if (middleware.scss) { %>
+	<style lang="scss" scoped>
+</style><% } else { %>
+	<style scoped></style>
+<% } %>

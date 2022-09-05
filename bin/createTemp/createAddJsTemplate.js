@@ -1,5 +1,5 @@
 import createTemplate from "../utils/createTemplate.js";
 
 export default (config) => {
-	return createTemplate("../../template/add-js.ejs", {}, "babel");
+	return createTemplate("../../template/add-js.ejs", { middleware: config.middleware }, "babel");
 };

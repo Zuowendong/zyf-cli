@@ -1,7 +1,22 @@
+<template>
+	<div>
+		<% if (middleware.vueRouter) { %>
+			<router-view />
+		<% } else { %>
+			<h1>vue-cli</h1>
+			<Todo />
+			<HelloWorld :msg="msg" @change="changeMsgHandle"/>
+		<% } %>
+	</div>
+</template>
+
 <script setup>
 <% if (!middleware.vueRouter) { %>
 import {ref} from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+<% if (middleware.pinia) { %>
+import Todo from '../components/Todo.vue'
+<% } %>
 let msg = ref('Hello World ')
 const changeMsgHandle = () => {
 	msg.value += msg.value
@@ -9,16 +24,9 @@ const changeMsgHandle = () => {
 <% } %>
 </script>
 
-<template>
-	<div>
-		<% if (middleware.vueRouter) { %>
-			<router-view />
-		<% } else { %>
-			<h1>vue-cli</h1>
-			<hello-world :msg="msg" @change="changeMsgHandle"/>
-		<% } %>
-	</div>
-</template>
-
-<style scoped></style>
+<% if (middleware.scss) { %>
+	<style lang="scss" scoped>
+</style><% } else { %>
+	<style scoped></style>
+<% } %>
 	

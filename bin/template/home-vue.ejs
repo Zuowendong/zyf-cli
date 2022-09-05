@@ -1,7 +1,8 @@
 <template>
 	<div>
 	<div @click="jumpToAbout">Home</div>
-	<hello-world :msg="msg" @change="changeMsgHandle"/>
+	<Todo />
+	<HelloWorld :msg="msg" @change="changeMsgHandle"/>
 	</div>
 </template>
 
@@ -10,6 +11,9 @@ import {ref} from 'vue'
 import { useRouter } from "vue-router";
 
 import HelloWorld from '../components/HelloWorld.vue'
+<% if (middleware.pinia) { %>
+import Todo from '../components/Todo.vue'
+<% } %>
 
 let msg = ref('Hello World ')
 const changeMsgHandle = () => {
@@ -24,4 +28,8 @@ const jumpToAbout = () => {
 };
 </script>
 
-<style scoped></style>
+<% if (middleware.scss) { %>
+	<style lang="scss" scoped>
+</style><% } else { %>
+	<style scoped></style>
+<% } %>

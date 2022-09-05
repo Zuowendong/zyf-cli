@@ -5,6 +5,7 @@ export default (config) => {
 		"../../template/index-html.ejs",
 		{
 			htmlTag: "<!DOCTYPE html>",
+			middleware: config.middleware,
 		},
 		"html"
 	);
