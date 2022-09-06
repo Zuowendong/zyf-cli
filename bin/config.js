@@ -11,5 +11,6 @@ export function createConfig(answer) {
 			vueRouter: haveMiddleware("vue-router"),
 			pinia: haveMiddleware("pinia"),
 		},
+		install: answer.install
 	};
 }

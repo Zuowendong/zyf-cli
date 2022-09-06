@@ -1,7 +1,7 @@
 {
   "name": "zyf-cli",
-  "version": "1.0.0",
-  "description": "基于nodejs的cli工具",
+  "version": "0.0.1",
+  "description": "Nodejs-based CLI tool",
   "main": "index.js",
   "bin": "./bin/index.js",
   "type": "module",
@@ -10,15 +10,19 @@
     "package.json"
   ],
   "scripts": {
-    "test": "rm -rf ./hei && node index.js",
-    "test-g": "rm -rf ./hei && zyf-cli"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:wendZzoo/zyf-cli.git"
+    "url": "git@github.com:Zuowendong/zyf-cli.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "zyf",
+    "cli",
+    "vue3",
+    "vite"
+  ],
+  "author": "zuowendong",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.0.1",
