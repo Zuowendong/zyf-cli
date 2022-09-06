@@ -4,7 +4,7 @@
 			<router-view />
 		<% } else { %>
 			<h1>vue-cli</h1>
-			<Todo />
+			<% if (middleware.pinia) { %><Todo /><% } %>
 			<HelloWorld :msg="msg" @change="changeMsgHandle"/>
 		<% } %>
 	</div>

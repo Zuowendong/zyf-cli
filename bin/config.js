@@ -1,7 +1,5 @@
 export function createConfig(answer) {
 	function haveMiddleware(name) {
-		console.log("config.js", answer.middleware);
-
 		return answer.middleware.indexOf(name) !== -1;
 	}
 
